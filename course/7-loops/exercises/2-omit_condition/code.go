@@ -4,8 +4,16 @@ import (
 	"fmt"
 )
 
+const baseCost = 1.0
+
 func maxMessages(thresh float64) int {
-	// ?
+	var totalCost float64
+	for i := 0; ; i++ {
+		totalCost += (0.01 * float64(i)) + baseCost
+		if totalCost > thresh {
+			return i
+		}
+	}
 }
 
 // don't edit below this line
