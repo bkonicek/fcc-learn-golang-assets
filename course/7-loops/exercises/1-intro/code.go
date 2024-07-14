@@ -4,8 +4,14 @@ import (
 	"fmt"
 )
 
+const baseCost = 1
+
 func bulkSend(numMessages int) float64 {
-	// ?
+	var totalCost float64
+	for i := 0; i < numMessages; i++ {
+		totalCost += (0.01 * float64(i)) + baseCost
+	}
+	return totalCost
 }
 
 // don't edit below this line
