@@ -7,7 +7,7 @@ import (
 func getMaxMessagesToSend(costMultiplier float64, maxCostInPennies int) int {
 	actualCostInPennies := 1.0
 	maxMessagesToSend := 0
-	for actualCostInPennies < float64(maxCostInPennies) {
+	for actualCostInPennies <= float64(maxCostInPennies) {
 		maxMessagesToSend++
 		actualCostInPennies *= costMultiplier
 	}
@@ -34,4 +34,5 @@ func main() {
 	test(1.1, 5)
 	test(1.3, 10)
 	test(1.35, 25)
+	test(1.35, 1)
 }
