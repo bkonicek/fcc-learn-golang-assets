@@ -6,8 +6,9 @@ we know that the dividend of the smallest divisor (meeting the conditions) divid
 also be the largest valid divisor.
 */
 func getPacketSize(message string) int {
-	// Since we're flipping the divisor and divideds, we can
-	// skip 1 through 3 as they are either 1 or prime
+	// Since we're flipping the divisor (number of packets) and dividends (packet size), we can
+	// skip 1 through 3 as they are either 1 or prime and we know
+	// those aren't valid packet sizes.
 	for i := 4; i < len(message); i++ {
 		if isPrime(i) {
 			continue
