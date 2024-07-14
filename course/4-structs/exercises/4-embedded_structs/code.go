@@ -3,6 +3,7 @@ package main
 import "fmt"
 
 type sender struct {
+	user
 	rateLimit int
 }
 
