@@ -7,15 +7,16 @@ type StatusError struct {
 }
 
 func (sE StatusError) Error() string {
-	return fmt.Sprint(sE.msg)
+	switch l := len(sE.msg); {
+	case l <= 0:
+		return fmt.Sprint("status cannot be empty")
+	case l > 140:
+		return fmt.Sprint("status exceeds 140 characters")
+	default:
+		return ""
+	}
 }
 
 func validateStatus(status string) error {
-	if len(status) <= 0 {
-		return StatusError{msg: "status cannot be empty"}
-	}
-	if len(status) > 140 {
-		return StatusError{msg: "status exceeds 140 characters"}
-	}
-	return nil
+	return StatusError{msg: status}
 }
