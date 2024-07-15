@@ -17,6 +17,12 @@ func getPacketSize(message string) int {
 			return len(message) / i
 		}
 	}
+	// Handle lengths with only non-composite divisors (other than the length itself)
+	// The largest packet size would be 1, and number of packets is the length of the message.
+	// According to the prompt, only the number of packets has to be composite, not the packet size itself
+	if !isPrime(len(message)) && len(message) > 0 {
+		return 1
+	}
 	return 0
 }
 

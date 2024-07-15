@@ -14,6 +14,9 @@ func TestGetPacketSize(t *testing.T) {
 		{"No, this is Boots the Magic Bear", 8},
 		{"I've been trying to reach you about your car's extended warranty", 16},
 		{"The mystery of salmon isn't a problem to solve, but a reality to experience...", 13},
+		{"Who isnt00", 1},
+		{"Who isnt", 2},
+		{"Who is", 1},
 	}
 	if withSubmit {
 		testCases = append(testCases,
