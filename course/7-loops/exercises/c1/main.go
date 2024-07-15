@@ -10,11 +10,10 @@ func getPacketSize(message string) int {
 	// skip 1 through 3 as they are either 1 or prime and we know
 	// those aren't valid packet sizes.
 	for i := 4; i < len(message); i++ {
-		if isPrime(i) {
-			continue
-		}
-		if len(message)%i == 0 {
-			return len(message) / i
+		if !isPrime(i) {
+			if len(message)%i == 0 {
+				return len(message) / i
+			}
 		}
 	}
 	// Handle lengths with only non-composite divisors (other than the length itself)
