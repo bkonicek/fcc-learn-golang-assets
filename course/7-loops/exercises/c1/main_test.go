@@ -17,6 +17,7 @@ func TestGetPacketSize(t *testing.T) {
 		{"Who isnt00", 1},
 		{"Who isnt", 2},
 		{"Who is", 1},
+		{"Whois000", 2},
 	}
 	if withSubmit {
 		testCases = append(testCases,

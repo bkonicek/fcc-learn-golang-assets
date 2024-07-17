@@ -6,22 +6,21 @@ we know that the dividend of the smallest divisor (meeting the conditions) divid
 also be the largest valid divisor.
 */
 func getPacketSize(message string) int {
-	// Since we're flipping the divisor (number of packets) and dividends (packet size), we can
-	// skip 1 through 3 as they are either 1 or prime and we know
-	// those aren't valid packet sizes.
-	for i := 4; i < len(message); i++ {
-		if !isPrime(i) {
-			if len(message)%i == 0 {
-				return len(message) / i
+	messageLength := len(message)
+
+	// Start from the largest possible packet size and move downwards
+	for packetSize := messageLength; packetSize > 0; packetSize-- {
+		if messageLength%packetSize == 0 {
+			// Calculate number of packets
+			numPackets := messageLength / packetSize
+
+			// Check if numPackets is composite (not 1 or prime)
+			if numPackets > 1 && !isPrime(numPackets) {
+				return packetSize
 			}
 		}
 	}
-	// Handle lengths with only non-composite divisors (other than the length itself)
-	// The largest packet size would be 1, and number of packets is the length of the message.
-	// According to the prompt, only the number of packets has to be composite, not the packet size itself
-	if !isPrime(len(message)) && len(message) > 0 {
-		return 1
-	}
+
 	return 0
 }
 
