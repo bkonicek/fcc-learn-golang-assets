@@ -5,7 +5,18 @@ import (
 )
 
 func getNameCounts(names []string) map[rune]map[string]int {
-	// ?
+	if len(names) > 0 {
+		namesByFirstLetter := make(map[rune]map[string]int)
+		for _, name := range names {
+			firstLetter := rune(name[0])
+			if _, ok := namesByFirstLetter[firstLetter]; !ok {
+				namesByFirstLetter[firstLetter] = make(map[string]int)
+			}
+			namesByFirstLetter[firstLetter][name]++
+		}
+		return namesByFirstLetter
+	}
+	return nil
 }
 
 // don't edit below this line
