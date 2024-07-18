@@ -3,7 +3,15 @@ package main
 import "fmt"
 
 func createMatrix(rows, cols int) [][]int {
-	// ?
+	gridRow := make([][]int, rows)
+	for x := 0; x < rows; x++ {
+		gridRow[x] = make([]int, cols)
+		for y := 0; y < cols; y++ {
+			gridRow[x][y] = x * y
+		}
+	}
+
+	return gridRow
 }
 
 // dont edit below this line
