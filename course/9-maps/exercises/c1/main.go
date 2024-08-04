@@ -5,12 +5,10 @@ import (
 )
 
 func countDistinctWords(messages []string) int {
-	wordCount := make(map[string]int)
+	wordCount := make(map[string]struct{})
 	for _, message := range messages {
-		words := strings.Fields(message)
-		for _, w := range words {
-			word := strings.ToLower(w)
-			wordCount[word]++
+		for _, word := range strings.Fields(strings.ToLower(message)) {
+			wordCount[word] = struct{}{}
 		}
 	}
 	return len(wordCount)
