@@ -20,7 +20,7 @@ func test(e *email, newMessage string) {
 	fmt.Println("-- before --")
 	e.print()
 	fmt.Println("-- end before --")
-	e.setMessage("this is my second draft")
+	e.setMessage(newMessage)
 	fmt.Println("-- after --")
 	e.print()
 	fmt.Println("-- end after --")
