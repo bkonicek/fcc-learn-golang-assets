@@ -2,8 +2,12 @@ package main
 
 import "fmt"
 
-func getLast[]() {
-
+func getLast[T any](s []T) T {
+	var lastVal T
+	if len(s) > 0 {
+		lastVal = s[len(s)-1]
+	}
+	return lastVal
 }
 
 // don't edit below this line
